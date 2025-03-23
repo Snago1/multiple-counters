@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Flex, Divider } from "antd";
 
 function App() {
   const [counts, setCounts] = useState([0]);
@@ -19,12 +20,23 @@ function App() {
 
   return (
     <div>
-      <button onClick={addCount}>Добавить счетчик</button>
+      <Flex gap="small" justify="center">
+        <Button type="primary" onClick={addCount}>
+          Добавить счетчик
+        </Button>
+      </Flex>
+      <Divider dashed />
       {counts.map((count, index) => (
         <div key={index}>
-          <p>{count}</p>
-          <button onClick={() => increment(index)}>+</button>
-          <button onClick={() => decrement(index)}>-</button>
+          <p style={{ textAlign: "center" }}>{count}</p>
+          <Flex gap="small" justify="center" wrap>
+            <Button type="dashed" onClick={() => increment(index)}>
+              +
+            </Button>
+            <Button type="dashed" onClick={() => decrement(index)}>
+              -
+            </Button>
+          </Flex>
         </div>
       ))}
     </div>
